@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cart</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="navbar">
+<a href="catalog.html">Back</a>
+</div>
+
+<h2 style="text-align:center;">Your Cart</h2>
+
+<div id="cartItems"></div>
+
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let container = document.getElementById("cartItems");
+
+if(cart.length === 0){
+    container.innerHTML = "<p style='text-align:center;'>Cart is empty</p>";
+}else{
+    cart.forEach(item => {
+        container.innerHTML += `
+        <div class="container" style="display:flex; justify-content:space-between;">
+            <span>${item.name}</span>
+            <span>₹${item.price}</span>
+        </div>`;
+    });
+}
+</script>
+
+</body>
+</html>

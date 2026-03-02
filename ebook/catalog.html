@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Catalog</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="navbar">
+<a href="login.html">Logout</a>
+<a href="cart.html">Cart</a>
+</div>
+
+<h2 style="text-align:center">Book Catalog</h2>
+
+<div class="book-grid">
+
+<div class="book">
+<h3>kg apples</h3>
+<p>₹300</p>
+<button onclick="addToCart('kg apples',300)">Add to Cart</button>
+</div>
+
+<div class="book">
+<h3>Web Design</h3>
+<p>₹250</p>
+<button onclick="addToCart('Web Design',250)">Add to Cart</button>
+</div>
+
+</div>
+
+<script>
+function addToCart(name, price) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.push({name, price});
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert(name + " added to cart");
+}
+</script>
+</body>
+</html>
